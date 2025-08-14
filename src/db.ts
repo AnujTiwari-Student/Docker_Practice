@@ -1,13 +1,11 @@
 import mongoose, { Schema, model } from 'mongoose';
 
-const mongoUrl: string = 'mongodb://localhost:27017/myDatabase100xdevs';
+const mongoUrl: string = 'mongodb://mongo_db:27017/myDatabase100xdevs';
 
-// Connect to MongoDB
 mongoose.connect(mongoUrl)
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 
-// Define a User schema
 interface IUser {
   name: string;
   age: number;
@@ -20,5 +18,4 @@ const UserSchema: Schema = new Schema<IUser>({
   email: { type: String, required: true }
 });
 
-// Create a User model
 export const User = model<IUser>('User', UserSchema);
